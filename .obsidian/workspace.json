@@ -8,29 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c5c90ca17a0f1174",
+            "id": "af5f838fd78e45e1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes.md",
+                "file": "Blueprint.md",
                 "mode": "source",
                 "source": false
               }
             }
-          },
-          {
-            "id": "c41cf718977da43d",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.4.5"
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -96,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Notes.md",
+                "file": "Blueprint.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Notes.md",
+                "file": "Blueprint.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Notes.md"
+                "file": "Blueprint.md"
               }
             }
           }
@@ -157,8 +146,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c41cf718977da43d",
+  "active": "af5f838fd78e45e1",
   "lastOpenFiles": [
+    "Development.md",
+    "Blueprint.md",
+    "Introduction.md",
+    "Glossary.md",
     "Notes.md"
   ]
 }
