@@ -38,7 +38,7 @@ render(): ReactNode {
 	- Create a new property as follows:
 ```xml
 <propertyGroup caption="Data source">
-	<property key="textAttribute" type="attribute">
+	<property key="textAttribute" type="attribute" required="true">
 		<caption>Text</caption>
 		<description>A string attribute that the text box will read/write</description>
 		<attributeTypes>
