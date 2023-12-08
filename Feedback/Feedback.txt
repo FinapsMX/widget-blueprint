@@ -1,0 +1,106 @@
+• Install Yeoman:
+	○ npm install -g yo
+	○ -> mention explicitly where/how this should be done, and using which program (visual studio / CMD etc)
+• Navigate to your project's app directory, create a new folder CustomWidgets and open in Powershell.
+	○ Maybe add a sentence referring to Windows file explorer / Mendix -> App -> Show app directory in Explorer, and that this folder has to be created in the root folder
+	○ Make the powershell part more explicit (search with windows icon -> Windows Powershell (or VS) -> cd <directory path>
+• Fill in the information requested; the following should be completed as specified -> include all questions in here, and mention which ones are prefilled correctly
+	○ Widget type: For web mobile apps -> should be 'For web and hybrid mobile apps'
+
+
+
+1. Editor preview
+	Mention to also remove 'import { HelloWorldSample } from "./components/HelloWorldSample";' ?
+2. Attributes
+	Mention to also delete 'import { HelloWorldSample } from "./components/HelloWorldSample";
+	
+• #4
+	○ Shows error in TestWidget.tsx line 10, but this is apparently resolved by the subsequent build step. Mention this in the blueprint
+• #5
+	You will be able to enter text into the widget, however the data will not be persisted. -> incorrect; in the default state the widget is only able to show the current value of the Mendix attribute. It is not yet possible to change this value by typing in the text box.
+• #6
+	○ 'Update widget' is greyed out for me after adding the event and running npm build, Updating all widgets doesn’t do anything, restarting Mendix doesn’t make it show up either. Don't think the <description> tag should be in the code snippet as well?
+	○ Render function should be modified to:
+
+ return <TextInput
+            value={value}
+            style={this.props.style}
+            className={this.props.class}
+            tabIndex={this.props.tabIndex}
+            onUpdate={this.onUpdateHandle}
+            onLeave={this.onLeaveHandle}
+        />;
+	○ Should also add to <widget_name>.tsx:
+		
+		private readonly onLeaveHandle = this.onLeave.bind(this);
+		
+	○ For me, TextInput.tsx looks like this now:
+		
+		import { CSSProperties, ChangeEvent, Component, ReactNode, createElement } from "react";
+		import classNames from "classnames";
+		export interface InputProps {
+		    value: string;
+		    className?: string;
+		    index?: number;
+		    style?: CSSProperties;
+		    tabIndex?: number;
+		    onUpdate?: (value: string) => void;
+		    onLeave?: (value: string, changed: boolean) => void;
+		}
+		interface InputState {
+		    editedValue?: string;
+		}
+		export class TextInput extends Component<InputProps, InputState> {
+		    private readonly handleChange = this.onChange.bind(this);
+		    private readonly onBlurHandle = this.onBlur.bind(this);
+		    readonly state: InputState = { editedValue: undefined };
+		    componentDidUpdate(prevProps: InputProps): void {
+		        if (this.props.value !== prevProps.value) {
+		            this.setState({ editedValue: undefined });
+		        }
+		    }
+		    render(): ReactNode {
+		        const className = classNames("form-control", this.props.className);
+		        return <input
+		            type="text"
+		            className={className}
+		            style={this.props.style}
+		            value={this.getCurrentValue()}
+		            tabIndex={this.props.tabIndex}
+		            onChange={this.handleChange}
+		            onBlur={this.onBlurHandle}
+		        />;
+		    }
+		    private getCurrentValue(): string {
+		        return this.state.editedValue !== undefined
+		            ? this.state.editedValue
+		            : this.props.value;
+		    }
+		    private onChange(event: ChangeEvent<HTMLInputElement>): void {
+		        if (this.props.onUpdate) {
+		            this.props.onUpdate(event.target.value);
+		        }
+		    }
+		    private onBlur(): void {
+		        const inputValue = this.props.value;
+		        const currentValue = this.getCurrentValue();
+		        if (this.props.onLeave) {
+		            this.props.onLeave(currentValue, currentValue !== inputValue);
+		        }
+		        this.setState({ editedValue: undefined });
+		    }
+		}
+		
+	○ In TextInput.tsx, Onchange function should be:
+		
+		private onChange(event: ChangeEvent<HTMLInputElement>): void {
+		        this.setState({ editedValue: event.target.value });
+		    }
+	○ In .xml, the onChangeAction should be linked to textAttribute:
+		
+		onChange="onChangeAction"
+	
+		
+
+• It would be nice to have some basic explanation on React component lifecycle (i.e. the render() method being called every time a prop/state is changed)
+
