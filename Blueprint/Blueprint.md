@@ -24,7 +24,7 @@ The Pluggable Widget Generator is the quickest way to start developing a widget 
  	 - **Mendix project path**: <Project_Root_Directory>
 	 - **Which programming language do you want to use for the widget?**: Typescript
 	 - **Which type of components do you want to use?**: Class Components
-	 - **Which tpye of widget are you developing?**: For web and hybrid mobile apps
+	 - **Which type of widget are you developing?**: For web and hybrid mobile apps
 	 - **Which template do you want to use for the widget?**: Empty widget
 	 - **Add unit tests for the widget?**: No *(We will create these ourselves)*
 	 - **Add End-to-end tests for the widget?**: No
@@ -50,7 +50,7 @@ render(): ReactNode {
                 <description>Sample text input</description>
 	</property>
 ```
-	- Create a new property group as follows by placing it between the existing `<propertygroup>` open and close tags:
+- Create a new property group as follows by placing it between the existing `<propertygroup>` open and close tags:
 ```xml
 <propertyGroup caption="Data source">
 	<property key="textAttribute" type="attribute" required="true">
