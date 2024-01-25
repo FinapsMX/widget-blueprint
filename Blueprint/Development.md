@@ -28,4 +28,4 @@ A standardized way of working confers the following benefits:
 	1. `<type>`: `[feature/fix/infrastructure/debt]`
 
 # Getting started
-Now that you are familiar with the standards and practices of widget development, you can begin developing. Check out the [[Blueprint]] for a getting started guide.
+Now that you are familiar with the standards and practices of widget development, you can begin developing. Check out the [Blueprint](https://github.com/FinapsMX/widget-blueprint/blob/main/Blueprint/Blueprint.md) for a getting started guide.
