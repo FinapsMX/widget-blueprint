@@ -7,4 +7,4 @@ The concept of pluggable widgets can be broken down into a few core ideals:
 4. **Reusable**: Once a pluggable web widget is created, it can be reused in all Mendix apps, making it a powerful tool for developers who want to build a library of custom UI components or integrate specific functionality into their applications.
 
 # Development
-This blueprint aims to provide a standardized way of working for the development of widgets. Further information can be found in [[Development]].
+This blueprint aims to provide a standardized way of working for the development of widgets. Further information can be found in [Development](https://github.com/FinapsMX/widget-blueprint/blob/main/Blueprint/Development.md).
